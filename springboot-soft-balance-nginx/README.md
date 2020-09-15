@@ -5,7 +5,7 @@
 + 项目执行 clean 、 package 操作，将打包的 jar 和 application.yaml 放在一起
 + 修改 `application.yaml` 端口地址.
 + 启动多个服务
-+ 启动后在不同的客户端机器上访问 [http://localhost:8080/hello/username](http://localhost:8080/hello/username)  username 自定义 。测试负载均衡
++ 启动后在不同的客户端机器上访问 [http://localhost/hello/username](http://localhost/hello/username)  username 自定义 。测试负载均衡
 
 > 为避免迁移脚本冲突，如果不建多个数据库脚本的情况为，请先清空数据库里的内容
 
