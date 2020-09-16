@@ -11,13 +11,6 @@ springboot-useful 是集中一些 springboot 中有用的组件的开发示例�
 
 + Gitee: [https://gitee.com/alexliu0725/springboot-useful](https://gitee.com/alexliu0725/springboot-useful)
 
-### 软件架构
-
-+ Springboot3
-+ Mysql5.7+
-+ Nginx-1.19.2
-+ ...
-
 ### 安装教程
 
 开箱即用，所有工程均有迁移脚本，配置文件。使用前请先配置数据库、缓存等配置文件
