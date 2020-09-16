@@ -1,0 +1,42 @@
+spring:
+  banner:
+    charset: UTF-8
+  messages:
+    encoding: UTF-8
+
+  # 模板引擎
+  freemarker:
+    # 是否启用freemarker
+    enabled: true
+    # 模板编码。
+    charset: UTF-8
+    # 是否允许HttpServletRequest属性覆盖(隐藏)控制器生成的同名模型属性
+    allow-request-override: false
+    # 是否允许HttpSession属性覆盖(隐藏)控制器生成的同名模型属性。
+    allow-session-override: false
+    # 设定所有request的属性在merge到模板的时候，是否要都添加到model中.
+    expose-request-attributes: false
+    # 是否优先从文件系统加载template，以支持热加载，默认为true
+    prefer-file-system-access: true
+    # 是否检查模板位置是否存在。
+    check-template-location: true
+    # Content-Type value.
+    content-type: text/html;charset=UTF-8
+    # 是否启用模板缓存 开发环境设置为false，生成环境设置为true
+    cache: false
+    # 设定模板的后缀，默认.ftlh
+    suffix: .ftl
+    # 设定模板的加载路径，多个以逗号分隔，默认: classpath:/templates
+    template-loader-path: ["classpath:/templates/views"]
+    settings:
+      # 模板统一异常处理
+      template_exception_handler: com.liuqi.springbootfreemarkerpjax.core.FreemarkerExceptionHandler
+
+  # jsonFormat 时间设置为东八区
+  jackson:
+    time-zone: GMT+8
+
+server:
+  tomcat:
+    uri-encoding: UTF-8
+  port: 8080
