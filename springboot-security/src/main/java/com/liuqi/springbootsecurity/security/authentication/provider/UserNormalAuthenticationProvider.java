@@ -4,8 +4,6 @@ import com.liuqi.springbootsecurity.security.SecurityConfigSource;
 import com.liuqi.springbootsecurity.security.authentication.CustomerSecurityAuthenticationProcessService;
 import com.liuqi.springbootsecurity.security.authentication.token.UserLoginNormalAuthenticationToken;
 import com.liuqi.springbootsecurity.security.entity.SecurityUser;
-import com.liuqi.springbootsecurity.security.error.MobileCodeError;
-import com.liuqi.springbootsecurity.security.error.MobileNotFoundError;
 import com.liuqi.springbootsecurity.security.error.PasswordError;
 import com.liuqi.springbootsecurity.security.error.UserNotFoundError;
 import lombok.extern.log4j.Log4j2;
@@ -23,6 +21,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  *     3. 通过 CustomerSecurityAuthenticationProcessService 获取用户信息【数据库】<br>
  *     4. 判断是否通过验证<br>
  *     5. 通过则重新创建一个新的 token ，设置已经通过验证，并返回给 manager<br>
+ *
+ *     正式环境如果有多个 provider 可以通过抽象类来实现。示例中为了速度，复制了 2 个，简单修改了下。
  *
  * @author : alexliu
  * @version v1.0 , Create at 2:11 PM 2020/3/10

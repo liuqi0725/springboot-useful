@@ -136,7 +136,7 @@ public class SecurityWebConfig extends WebSecurityConfigurerAdapter {
         // 创建处理 authentication 的 Provider
         // 创建 2 个
         // 一个普通，账号密码
-        // 一个通过手机号 验证码登陆
+        // 一个通过手机 验证码登陆
         ProviderManager providerManager = new ProviderManager(Arrays.asList(new UserNormalAuthenticationProvider() , new UserMobileAuthenticationProvider()));
         userAuthenticationFilter.setAuthenticationManager(providerManager);
         return userAuthenticationFilter;

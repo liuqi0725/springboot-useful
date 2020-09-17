@@ -21,6 +21,8 @@ import org.springframework.security.core.userdetails.UserDetails;
  *     4. 判断是否通过验证<br>
  *     5. 通过则重新创建一个新的 token ，设置已经通过验证，并返回给 manager<br>
  *
+ *     正式环境如果有多个 provider 可以通过抽象类来实现。示例中为了速度，复制了 2 个，简单修改了下。
+ *
  * @author : alexliu
  * @version v1.0 , Create at 2:11 PM 2020/3/10
  */

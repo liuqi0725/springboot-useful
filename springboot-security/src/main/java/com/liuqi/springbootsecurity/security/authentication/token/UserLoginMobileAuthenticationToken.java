@@ -2,7 +2,6 @@ package com.liuqi.springbootsecurity.security.authentication.token;
 
 import lombok.extern.log4j.Log4j2;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

@@ -44,6 +44,7 @@ public class CustomerAccessMetadataSource implements FilterInvocationSecurityMet
         for(SecurityPermission p : list){
             // 如果权限 url 不为空 添加 url
             if(!StringUtils.isEmpty(p.getUrl())){
+                // 可以设置其他匹配项， 在决策器中使用
                 permissionMap.put(new AntPathRequestMatcher(p.getUrl()) , SecurityConfig.createList(p.getUnKey()));
             }
         }
@@ -51,41 +52,41 @@ public class CustomerAccessMetadataSource implements FilterInvocationSecurityMet
     }
 
     /**
-     * 获取对比结果
+     * 获取决策器对比 url 的属性
      * @param o 可以包含了本次请求的所有内容，包含 HttpRequest 等
-     * @return URL访问需要的认证集合
+     * @return URL 访问需要的认证集合[示例中只有权限 key，可以添加其他]
      * @throws IllegalArgumentException 参数错误
      */
     @Override
     public Collection<ConfigAttribute> getAttributes(Object o) throws IllegalArgumentException {
 
-        if(permissionMap == null){
-            // 读取所有权限
-            loadPermissionMap();
-        }
         FilterInvocation fi = (FilterInvocation)o;
 
         // 查看是否白名单
         if(isPermitUrl(fi.getRequest())){
             // 不用通过决策器，直接访问
+            // 决策器获取到为 null 就直接放过了
             return null;
+        }
+
+        if(permissionMap == null){
+            // 读取所有权限
+            loadPermissionMap();
         }
 
         Assert.notNull(permissionMap , "PermissionMap can`t be Null.check your code");
 
         for(AntPathRequestMatcher permissionURLMatcher : permissionMap.keySet()){
 
+            // 找到访问 url 需要的决策因素
             if(permissionURLMatcher.matches(fi.getRequest())){
                 // 返回 要访问此 URL 的权限及其他判断条件
                 return permissionMap.get(permissionURLMatcher);
             }
         }
 
-        // 不是白名单，没有权限  抛出异常
+        // 不是白名单，也没有找到对应的权限匹配项  抛出异常
         throw new AccessDeniedException("No Permission");
-
-        // 没匹配到返回 null
-        // return null;
     }
 
     private boolean isPermitUrl(HttpServletRequest request){

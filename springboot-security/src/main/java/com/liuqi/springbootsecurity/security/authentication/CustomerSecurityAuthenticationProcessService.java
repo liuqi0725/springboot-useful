@@ -20,7 +20,5 @@ public interface CustomerSecurityAuthenticationProcessService {
 
     SecurityUser loadUserByUsername(String userName);
 
-    SecurityUser loadUserByUsername(String userName,String vcid);
-
     SecurityUser getUserAuthorities(SecurityUser user);
 }

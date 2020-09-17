@@ -72,9 +72,8 @@ public class UserAuthenticationFilter extends AbstractAuthenticationProcessingFi
             String mobile = trimStr(obtainMobile(request));
             String mobileCode = trimStr(obtainMobileCode(request));
 
-            // 主要通过这个token来决定使用哪个userDetailService.
             // AuthenticationProvider里面有个supports方法,主要用来验证指定的token是否符合.
-            // 可以通过指定不同类型的 token 来决定使用哪个 userDetailService.
+            // 可以通过指定不同类型的 token 来决定使用哪个 Provider.
             UserLoginMobileAuthenticationToken authRequest = new UserLoginMobileAuthenticationToken(mobile,mobileCode);
             // 设置身份验证详情
             setDetails(request, authRequest);
@@ -85,9 +84,8 @@ public class UserAuthenticationFilter extends AbstractAuthenticationProcessingFi
             String username = trimStr(obtainUsername(request));
             String password = trimStr(obtainPassword(request));
 
-            // 主要通过这个token来决定使用哪个userDetailService.
             // AuthenticationProvider 里面有个supports方法,主要用来验证指定的token是否符合.
-            // 可以通过指定不同类型的 token 来决定使用哪个 userDetailService.
+            // 可以通过指定不同类型的 token 来决定使用哪个 Provider.
             UserLoginNormalAuthenticationToken authRequest = new UserLoginNormalAuthenticationToken(username,password);
             // 设置身份验证详情
             setDetails(request, authRequest);

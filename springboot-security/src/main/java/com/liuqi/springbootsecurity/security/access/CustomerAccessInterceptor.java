@@ -11,12 +11,7 @@ import java.io.IOException;
 
 /**
  * 类说明 <br>
- *     系统安全拦截器
- * <p>
- *
- *
- *
- *
+ *     系统访问拦截器
  *
  * @author : alexliu
  * @version v1.0 , Create at 9:25 PM 2020/3/2
@@ -60,7 +55,7 @@ public class CustomerAccessInterceptor extends AbstractSecurityInterceptor imple
     }
 
     /**
-     * 把 url 所需的权限类设置到拦截器中
+     * 把 url 所需的权限资源获取类设置到拦截器中
      * @return {@link SecurityMetadataSource} 资源
      */
     @Override
