@@ -38,10 +38,10 @@ public class SecurityWebConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        // 添加访问过滤器(access)
+        // 添加访问过滤器(access) ， 添加在 FilterSecurityInterceptor 之后
         http.addFilterAfter(getAccessInterceptor(), FilterSecurityInterceptor.class);
 
-        // 添加认证过滤器(authentication)
+        // 添加认证过滤器(authentication) ， 替换【或者之前】 UsernamePasswordAuthenticationFilter
         http.addFilterAt(getUserAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 
         // 允许 iframe
