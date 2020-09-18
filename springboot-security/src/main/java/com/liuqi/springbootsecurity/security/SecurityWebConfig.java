@@ -4,10 +4,12 @@ package com.liuqi.springbootsecurity.security;
 import com.liuqi.springbootsecurity.security.access.CustomerAccessDecisionManager;
 import com.liuqi.springbootsecurity.security.access.CustomerAccessInterceptor;
 import com.liuqi.springbootsecurity.security.access.CustomerAccessMetadataSource;
+import com.liuqi.springbootsecurity.security.authentication.CustomerSecurityAuthenticationProcessService;
 import com.liuqi.springbootsecurity.security.authentication.UserAuthenticationFilter;
 import com.liuqi.springbootsecurity.security.authentication.provider.UserMobileAuthenticationProvider;
 import com.liuqi.springbootsecurity.security.authentication.provider.UserNormalAuthenticationProvider;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -35,8 +37,14 @@ import java.util.Arrays;
 @Log4j2
 public class SecurityWebConfig extends WebSecurityConfigurerAdapter {
 
+    @Autowired
+    private CustomerSecurityAuthenticationProcessService securityAuthenticationProcessService;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
+        // 注入业务处理
+        SecurityConfigSource.getInstance().setSecurityAuthenticationProcessService(securityAuthenticationProcessService);
 
         // 添加访问过滤器(access) ， 添加在 FilterSecurityInterceptor 之后
         http.addFilterAfter(getAccessInterceptor(), FilterSecurityInterceptor.class);

@@ -13,4 +13,9 @@ public class PasswordError extends RuntimeException {
     public PasswordError(String username) {
         super("账号:["+username+"] , 密码错误.");
     }
+
+    public PasswordError(String username , String msg) {
+        super("账号:["+username+"] , " +msg);
+    }
+
 }

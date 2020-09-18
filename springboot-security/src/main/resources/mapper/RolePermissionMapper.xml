@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liuqi.springbootsecurity.module.auth.dao.RolePermissionDao">
+
+    <resultMap id="BaseResultMap" type="com.liuqi.springbootsecurity.module.auth.entity.RolePermission">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="rid" jdbcType="INTEGER" property="rid" />
+        <result column="pid" jdbcType="INTEGER" property="pid" />
+        <result column="update_at" jdbcType="TIMESTAMP" property="updateAt" />
+    </resultMap>
+
+    <sql id="tableName">`sys_role_permission`</sql>
+
+    <select id="selectRolePermissionListWithManyRoleId" resultMap="BaseResultMap" parameterType="java.util.ArrayList">
+        select DISTINCT `pid` from <include refid="tableName"/> where `rid` in
+        <foreach collection="list" index="index" item="item" open="(" close=")" separator=",">
+            #{item,jdbcType=INTEGER}
+        </foreach>
+    </select>
+
+</mapper>

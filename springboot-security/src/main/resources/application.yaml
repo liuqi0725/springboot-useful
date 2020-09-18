@@ -1,1 +1,94 @@
+spring:
+  banner:
+    charset: UTF-8
+  messages:
+    encoding: UTF-8
 
+  datasource:
+    druid:
+      # mysql 5.7
+
+      #
+      # serverTimezone=UTC 时区会导致时间字段与实际查询时间不一致( 相差8-14小时不等)
+      # allowMultiQueries 允许一次性执行多条 sql ，可以用于批量操作
+#      url: jdbc:mysql://192.168.0.197:3306/springboot-useful?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&autoReconnect=true&useUnicode=true&useSSL=true&serverTimezone=UTC
+#      username: root
+#      password: w2j946^FQ=7K8
+      url: jdbc:mysql://localhost:3306/springboot-useful?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&autoReconnect=true&useUnicode=true&useSSL=true&serverTimezone=UTC
+      username: test
+      password: alexliu
+      initial-size: 1                            # 配置初始化大小（默认0）、最小、最大（默认8）
+      min-idle: 1
+      max-active: 20
+      max-wait: 60000                           # 配置获取连接等待超时的时间
+      pool-prepared-statements: true            # 是否缓存preparedStatement，也就是PSCache。PSCache对支持游标的数据库性能提升巨大。 默认为false
+      max-open-prepared-statements: 20          # 要启用PSCache，必须配置大于0，当大于0时，poolPreparedStatements自动触发修改为true。
+      time-between-eviction-runs-millis: 50000  # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      #min-evictable-idle-time-millis: 200000    # 配置一个连接在池中最小和最大生存的时间，单位是毫秒
+      #max-evictable-idle-time-millis: 900000    # 配置一个连接在池中最小和最大生存的时间，单位是毫秒
+
+      # 用来检测连接是否有效的sql，要求是一个查询语句，常用select 'x'。
+      # 如果validationQuery为null，testOnBorrow、testOnReturn、testWhileIdle都不会起作用。
+      validation-query: SELECT 1
+      test-on-borrow: true                      # 申请连接时执行validationQuery检测连接是否有效 默认为true
+      test-on-return: false                     # 归还连接时执行validationQuery检测连接是否有效 默认为false
+      test-while-idle: true                     # 申请连接的时候检测，如果空闲时间大于timeBetweenEvictionRunsMillis，执行validationQuery检测连接是否有效。
+      stat-view-servlet:
+        login-username: admin                   #配置监控页面访问登录名称
+        login-password: admin                   #配置监控页面访问密码
+      filter:
+        stat:
+          log-slow-sql: true                    #是否开启慢sql查询监控
+          slow-sql-millis: 300                  #慢SQL执行时间【毫秒】
+        slf4j:
+          enabled: true
+          statement-close-after-log-enabled: false
+          statement-create-after-log-enabled:  false
+          result-set-open-after-log-enabled: false
+          result-set-close-after-log-enabled: false
+
+    # 不用连接池
+    # url: jdbc:mysql://192.168.0.197:3306/springboot-useful?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&autoReconnect=true&useUnicode=true&useSSL=true&serverTimezone=UTC
+    # username: root
+    # password: w2j946^FQ=7K8
+    # driver-class-name: com.mysql.cj.jdbc.Driver
+
+  # 模板引擎
+  freemarker:
+    # 是否启用freemarker
+    enabled: true
+    # 模板编码。
+    charset: UTF-8
+    # 是否允许HttpServletRequest属性覆盖(隐藏)控制器生成的同名模型属性
+    allow-request-override: false
+    # 是否允许HttpSession属性覆盖(隐藏)控制器生成的同名模型属性。
+    allow-session-override: false
+    # 设定所有request的属性在merge到模板的时候，是否要都添加到model中.
+    expose-request-attributes: false
+    # 是否优先从文件系统加载template，以支持热加载，默认为true
+    prefer-file-system-access: true
+    # 是否检查模板位置是否存在。
+    check-template-location: true
+    # Content-Type value.
+    content-type: text/html;charset=UTF-8
+    # 是否启用模板缓存 开发环境设置为false，生成环境设置为true
+    cache: false
+    # 设定模板的后缀，默认.ftlh
+    suffix: .ftl
+    # 设定模板的加载路径，多个以逗号分隔，默认: classpath:/templates
+    template-loader-path: ["classpath:/templates/views"]
+    settings:
+      # 模板统一异常处理
+      template_exception_handler: com.liuqi.springbootsecurity.core.FreemarkerExceptionHandler
+
+  # jsonFormat 时间设置为东八区
+  jackson:
+    time-zone: GMT+8
+
+mybatis:
+  mapperLocations: classpath:mapper/*.xml
+
+server:
+  tomcat:
+    uri-encoding: UTF-8
+  port: 8080

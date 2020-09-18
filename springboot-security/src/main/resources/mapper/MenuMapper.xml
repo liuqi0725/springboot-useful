@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liuqi.springbootsecurity.module.auth.dao.MenuDao">
+
+    <resultMap id="BaseResultMap" type="com.liuqi.springbootsecurity.module.auth.entity.Menu">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="un_key" jdbcType="VARCHAR" property="unKey" />
+        <result column="pid" jdbcType="INTEGER" property="pid" />
+        <result column="nodepath" jdbcType="VARCHAR" property="nodepath" />
+        <result column="url" jdbcType="VARCHAR" property="url" />
+        <result column="icon" jdbcType="VARCHAR" property="icon" />
+        <result column="status" jdbcType="INTEGER" property="status" />
+        <result column="update_at" jdbcType="TIMESTAMP" property="updateAt" />
+    </resultMap>
+
+    <sql id="tableName">`sys_menus`</sql>
+
+    <select id="selectListSelective" resultMap="BaseResultMap" parameterType="com.liuqi.springbootsecurity.module.auth.entity.Menu">
+        select
+        *
+        from <include refid="tableName"/>
+        <where>
+            <if test="status != null">
+                and `status` = #{status , jdbcType=INTEGER}
+            </if>
+        </where>
+        order by `nodepath` asc
+    </select>
+
+</mapper>

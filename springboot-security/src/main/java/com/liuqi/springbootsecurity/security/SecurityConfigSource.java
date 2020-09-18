@@ -104,7 +104,8 @@ public class SecurityConfigSource {
      * @return String[]
      */
     public String[] getPermitUrl(){
-        // 正式编码可以写在配置文件中
-        return new String[]{"/","/login","/hello"};
+        // 正式编码可以写在配置文件中 ,
+        // '/error' 必须配置， 当错误时，会调用/error，不过不配置，会一直匹配不到/error 的权限，导致一直redirect 到/login
+        return new String[]{"/","/login","/error","/hello","/logout", "/login/error" , "/assets/**/vendor/**","/assets/**/css/**", "/assets/**/js/**"};
     }
 }

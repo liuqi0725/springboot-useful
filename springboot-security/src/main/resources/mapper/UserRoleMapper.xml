@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liuqi.springbootsecurity.module.auth.dao.UserRoleDao">
+
+    <resultMap id="BaseResultMap" type="com.liuqi.springbootsecurity.module.auth.entity.UserRole">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="uid" jdbcType="INTEGER" property="uid" />
+        <result column="rid" jdbcType="INTEGER" property="rid" />
+        <result column="update_at" jdbcType="TIMESTAMP" property="updateAt" />
+    </resultMap>
+
+    <sql id="tableName">`sys_user_role`</sql>
+
+
+    <sql id="queryWhere">
+        <where>
+            <if test="uid != null">
+                and `uid` = #{uid,jdbcType=INTEGER}
+            </if>
+            <if test="rid != null">
+                and `rid` = #{rid,jdbcType=INTEGER}
+            </if>
+            <if test="id != null">
+                and `id` = #{id,jdbcType=INTEGER}
+            </if>
+        </where>
+    </sql>
+
+    <select id="selectListSelective" resultMap="BaseResultMap" parameterType="com.liuqi.springbootsecurity.module.auth.entity.UserRole">
+        select * from <include refid="tableName"/> <include refid="queryWhere"/>
+    </select>
+
+</mapper>
