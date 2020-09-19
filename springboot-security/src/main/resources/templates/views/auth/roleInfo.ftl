@@ -5,9 +5,10 @@
 
 
 <@htmlBody>
-    <h3>
-        <a href="${path}" target="_blank">${name}</a>
-    </h3>
+    Role Ids :
+    <#list roles as id>
+        ${id} ,
+    </#list>
 </@htmlBody>
 
 

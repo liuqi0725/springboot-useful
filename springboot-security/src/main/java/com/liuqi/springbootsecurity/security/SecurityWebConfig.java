@@ -43,8 +43,12 @@ public class SecurityWebConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        // 注入业务处理
+        // 注入外部 认证业务处理类
         SecurityConfigSource.getInstance().setSecurityAuthenticationProcessService(securityAuthenticationProcessService);
+
+        // 设置外部 密码策略，设置 null ，采用 spring security 默认
+        SecurityConfigSource.getInstance().setCustomerPasswordEncoder(null);
+
 
         // 添加访问过滤器(access) ， 添加在 FilterSecurityInterceptor 之后
         http.addFilterAfter(getAccessInterceptor(), FilterSecurityInterceptor.class);

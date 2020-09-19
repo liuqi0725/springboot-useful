@@ -1,5 +1,6 @@
 package com.liuqi.springbootsecurity.core;
 
+import org.springframework.boot.web.error.ErrorAttributeOptions;
 import org.springframework.boot.web.servlet.error.DefaultErrorAttributes;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.WebRequest;
@@ -25,12 +26,8 @@ import java.util.Map;
 public class CustomerErrorProcesser extends DefaultErrorAttributes {
 
     @Override
-    public Map<String, Object> getErrorAttributes(WebRequest webRequest, boolean includeStackTrace) {
-        Map<String, Object> errorAttributes = super.getErrorAttributes(webRequest, includeStackTrace);
-        errorAttributes.put("personal", "houchen");
-        Map<String,Object> etx = (Map<String,Object>)webRequest.getAttribute("etx", 0);
-        errorAttributes.put("etx", etx);
-        return errorAttributes;
+    public Map<String, Object> getErrorAttributes(WebRequest webRequest, ErrorAttributeOptions options) {
+        return super.getErrorAttributes(webRequest, options);
     }
 
     @Override

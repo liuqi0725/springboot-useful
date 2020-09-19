@@ -23,7 +23,7 @@
                     </li>
                     <#-- 添加一级菜单 -->
                     <li>
-                        <a href="javascript:void(0);" id="${item.unKey}" onclick="admin.chooseMenu(${item.unKey})" r="${(item.url)?string(item.url,"")}" class="list-group-item active">${item.name}</a>
+                        <a href="javascript:void(0);" id="${item.unKey}" onclick="admin.chooseMenu('${item.unKey}')" r="${item.url!''}" class="list-group-item">${item.name}</a>
 
                 <#else >
                     <#-- 二级菜单 -->
@@ -33,10 +33,9 @@
                         <#assign haschild = true>
                     </#if>
 
-                        <dd id="${item.unKey}" class="left-menu">
-                            <a href="javascript:void(0);" id="${item.unKey}" onclick="admin.chooseMenu(${item.unKey})" r="${(item.url)?string(item.url,"")}" class="list-group-item active">${item.name}</a>
+                        <dd class="left-menu">
+                            <a href="javascript:void(0);" id="${item.unKey}" onclick="admin.chooseMenu('${item.unKey}')" r="${item.url!''}" class="list-group-item">${item.name}</a>
                         </dd>
-                    </li>
                 </#if>
 
 

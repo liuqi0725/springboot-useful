@@ -67,7 +67,7 @@
     <!-- bootstrap -->
     <script type="text/javascript" src="${basePath}/assets/vendor/bootstrap/js/bootstrap.js"></script>
     <!-- js -->
-    <script type="text/javascript" src="${basePath}/assets/main.js"></script>
+    <script type="text/javascript" src="${basePath}/assets/js/main.js"></script>
 
     <!-- customer -->
     <script>

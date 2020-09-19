@@ -182,23 +182,35 @@ public class AppUserSecurityAdapterImpl implements AppUserSecurityAdapter {
         for(Menu m : allMenus){
 
             if(parentMenu != null){
+                // 如果有父节点，检查是否父节点的子节点，不是则跳出
                 if(!parentMenu.getId().equals(m.getPid())){
                     continue;
+                }else{
+                    // pid != 0 判断子节点有无权限
+                    if(userHasPermissionForMenu(m , userPermissions)){
+                        userMenuList.add(m);
+                    }
                 }
             }
 
             // 多级菜单需要自己判断父节点进行递归
             if(m.getPid().equals(0)){
+
                 // 往下找符合的子节点
                 tempMenus = loadUserMenus(userPermissions , allMenus , m);
-                if(CollectionUtils.isEmpty(tempMenus)){
-                    // 有子节点，父节点一并添加
+                // 判断是否有子节点
+                // 1. 有子节点 ，则 pid=0 的节点可以访问
+                // 2. 无子节点 ，判断pid=0的节点有无权限访问
+                if(!CollectionUtils.isEmpty(tempMenus)){
+                    // 有子节点 该父节点可访问
                     userMenuList.add(m);
+                    // 添加子节点
                     userMenuList.addAll(tempMenus);
-                }
-            }else{
-                if(userHasPermissionForMenu(m , userPermissions)){
-                    userMenuList.add(m);
+                }else{
+                    // 判断有无权限，有则添加该 pid=0 的节点
+                    if(userHasPermissionForMenu(m , userPermissions)){
+                        userMenuList.add(m);
+                    }
                 }
             }
         }

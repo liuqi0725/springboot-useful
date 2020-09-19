@@ -21,7 +21,7 @@ public class AuthController {
 
     @RequestMapping("/role-info")
     public ModelAndView roleInfo(ModelAndView mv){
-        mv.addObject("role" , authService.getMyRoles());
+        mv.addObject("roles" , authService.getMyRoles());
         mv.setViewName("/auth/roleInfo");
         return mv;
     }
@@ -35,7 +35,7 @@ public class AuthController {
 
     @RequestMapping("/perm-list")
     public ModelAndView permissionList(ModelAndView mv){
-        mv.addObject("user" , authService.getMyPermissions());
+        mv.addObject("permissionList" , authService.getMyPermissions());
         mv.setViewName("/auth/permissionList");
         return mv;
     }

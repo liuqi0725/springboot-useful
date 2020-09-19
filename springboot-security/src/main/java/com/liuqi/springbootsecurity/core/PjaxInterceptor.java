@@ -80,7 +80,6 @@ public class PjaxInterceptor implements HandlerInterceptor {
         modelAndView.addObject("baseTemplate", NORMAL_TEMPLATE_PATH);
     }
 
-
     private Boolean isPjax(HttpServletRequest request){
         Boolean pjax = Boolean.parseBoolean(request.getHeader("X-PJAX"));
         if(log.isDebugEnabled()){

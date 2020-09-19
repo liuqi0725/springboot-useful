@@ -31,7 +31,7 @@
                         <ul class="dropdown-menu">
                             <li><a href="#">个人信息</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#">退出</a></li>
+                            <li><a href="/logout">退出</a></li>
                         </ul>
                     </li>
                 </ul>

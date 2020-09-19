@@ -25,7 +25,7 @@ public class AppFreemarkerCommonUtil {
      * @return menus
      */
     @SuppressWarnings("Unchecked")
-    public List<Menu> getMenus(){
+    public static List<Menu> getMenus(){
         return (List<Menu>)WebUtil.getSessionAttribute(WebCommonAttribute.CURRENT_USER_MENUS);
     }
 }

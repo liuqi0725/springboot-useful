@@ -24,7 +24,7 @@ springboot-useful 是集中一些 springboot 中有用的组件的开发示例�
 + [springboot-flyway](https://github.com/liuqi0725/springboot-useful/tree/master/springboot-flyway): springboot 数据库迁移脚本管理
 + [springboot-freemarker-pjax](https://github.com/liuqi0725/springboot-useful/tree/master/springboot-freemarker-pjax): springboot + freemarker + pjax 实现单页浏览，局部刷新
 + [springboot-soft-balance-nginx](https://github.com/liuqi0725/springboot-useful/tree/master/springboot-soft-balance-nginx): springboot + nginx 实现软负载均衡【反向代理】
-+ [springboot-security](https://github.com/liuqi0725/springboot-useful/tree/master/springboot-security): springboot + security 权限管理
++ [springboot-security](https://github.com/liuqi0725/springboot-useful/tree/master/springboot-security): springboot + security 用户认证，提供 2 种认证方式，【账号密码，手机验证码】
 + [springboot-security-redis-nginx](https://github.com/liuqi0725/springboot-useful/tree/master/springboot-security-redis-nginx): springboot + nginx 负载均衡，并同步session
 
 
