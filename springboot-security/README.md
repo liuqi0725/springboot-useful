@@ -6,6 +6,14 @@ SpringSecurity 是 Spring 提供安全管理框架。核心内容包含**认证*
 
 ## 示例说明
 
+### 版本
++ SpringBoot 2.3.3
++ JDK 1.8
++ Mybatis 2.1.3
++ Mysql 5.7+
+
+### 示例安装
+
 + 修改 `application.yaml` **端口**、**数据库** 等配置
 + 启动后在不同的客户端机器上访问 [http://localhost:8080](http://localhost:8080) （根据自己配置的端口访问）
 + 测试用2 种登陆方式: 用户密码、手机验证码
