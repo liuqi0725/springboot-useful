@@ -13,10 +13,11 @@ import sun.security.krb5.Config;
  * @version v1.0 , Create at 10:13 PM 2020/3/4
  */
 @Log4j2
-public class SecurityWebInit extends AbstractHttpSessionApplicationInitializer {
+public class SecurityWebInit {
+        //extends AbstractHttpSessionApplicationInitializer {
 
-    public SecurityWebInit(){
-        super(CustomerSessionConfig.class, Config.class);
-    }
+//    public SecurityWebInit(){
+//        super(CustomerSessionConfig.class, Config.class);
+//    }
 
 }

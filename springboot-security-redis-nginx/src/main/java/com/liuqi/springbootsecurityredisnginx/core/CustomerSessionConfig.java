@@ -1,12 +1,6 @@
 package com.liuqi.springbootsecurityredisnginx.core;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.redis.connection.RedisPassword;
-import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
-import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
-import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 
 /**
@@ -24,28 +18,8 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
 @EnableRedisHttpSession
 public class CustomerSessionConfig {
 
-//    @Value("${jetcache.remote.default.host}")
-//    private String redisHost;
-//
-//    @Value("${jetcache.remote.default.port}")
-//    private int redisPort;
-//
-//    @Value("${jetcache.remote.default.password}")
-//    private String redisPwd;
-
 //    @Bean
-//    public JedisConnectionFactory connectionFactory() {
-//        RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration();
-//        redisStandaloneConfiguration.setHostName(redisHost);
-//        redisStandaloneConfiguration.setDatabase(0);
-////        redisStandaloneConfiguration.setPassword(RedisPassword.of(redisPwd));
-//        redisStandaloneConfiguration.setPort(redisPort);
-//
-//        return new JedisConnectionFactory(redisStandaloneConfiguration);
+//    public LettuceConnectionFactory connectionFactory() {
+//        return new LettuceConnectionFactory();
 //    }
-
-    @Bean
-    public LettuceConnectionFactory connectionFactory() {
-        return new LettuceConnectionFactory();
-    }
 }

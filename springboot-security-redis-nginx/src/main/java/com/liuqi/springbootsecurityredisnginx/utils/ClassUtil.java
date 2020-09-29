@@ -467,15 +467,13 @@ public class ClassUtil {
 
     private ClassLoader getClassLoader() {
         ClassLoader classLoader;
-        log.info("获取 ClassLoader.");
         if(this.classLoader == null){
             classLoader = this.getClass().getClassLoader();
-            log.info("获取 ClassLoader. 使用当前默认 classLoader . {}",classLoader.getClass());
+            log.debug("获取 ClassLoader. 使用当前默认 classLoader . {}",classLoader.getClass());
         }else{
             classLoader = (URLClassLoader) SpringbootSecurityRedisNginxApplication.class.getClassLoader();
-            log.info("获取 ClassLoader. 使用 URLClassLoader . {}",classLoader.getClass());
+            log.debug("获取 ClassLoader. 使用 URLClassLoader . {}",classLoader.getClass());
         }
-
         return classLoader;
     }
 
