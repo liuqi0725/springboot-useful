@@ -1,5 +1,6 @@
 package com.liuqi.springbootsecurityredisnginx.module;
 
+import com.liuqi.springbootsecurityredisnginx.module.user.User;
 import com.liuqi.springbootsecurityredisnginx.security.SecurityUtil;
 import com.liuqi.springbootsecurityredisnginx.utils.WebUtil;
 import org.springframework.stereotype.Controller;
@@ -7,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.Date;
 
 
 /**
@@ -49,9 +52,11 @@ public class MainController {
      */
     @GetMapping(value = "/dashboard")
     public ModelAndView dashboard (ModelAndView mv){
-        String sessionId = WebUtil.getSessionId();
         mv.setViewName("dashboard");
-        mv.addObject("sessionId",sessionId);
+        mv.addObject("webSessionId",WebUtil.getSessionId());
+        mv.addObject("SecuritySessionId",SecurityUtil.getUserSessionId());
+        mv.addObject("loginTime",WebUtil.getSessionAttribute("USER_LOGIN_TIME_"+SecurityUtil.getUserInfo(User.class).getId()));
+        System.out.println(SecurityUtil.getUserInfo(User.class).getUsername() + "访问进来了。");
         return mv ;
     }
 

@@ -19,6 +19,7 @@ import org.springframework.util.AntPathMatcher;
 import org.springframework.util.CollectionUtils;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -106,6 +107,9 @@ public class AppUserSecurityAdapterImpl implements AppUserSecurityAdapter {
 
         // 获取用户 menus
         this.loadUserMenus(user);
+
+        // 保存登陆时间
+        WebUtil.setSessionAttribute("USER_LOGIN_TIME_"+user.getId() , new Date());
 
         return user;
     }

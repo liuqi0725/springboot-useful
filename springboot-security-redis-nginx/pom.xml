@@ -62,12 +62,6 @@
             </exclusions>
         </dependency>
 
-        <!-- redis 独立包-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-data-redis</artifactId>-->
-<!--        </dependency>-->
-
         <!--  spring-session + redis  -->
         <dependency>
             <groupId>org.springframework.session</groupId>
@@ -173,10 +167,10 @@
                             <resources>
                                 <resource>
                                     <directory>src/main/resources</directory>
-                                    <!-- 指定不需要处理的资源 <excludes> <exclude>WEB-INF/*.*</exclude> </excludes> -->
-                                    <!--<excludes>-->
-                                    <!--<exclude>**/*.xml</exclude>-->
-                                    <!--</excludes>-->
+                                    <!-- 指定不需要处理的资源
+                                    <excludes>
+                                    </excludes>
+                                    -->
                                     <includes>
                                         <include>*.xml</include>
                                         <include>*.yaml</include>
@@ -189,11 +183,6 @@
 
                 </executions>
             </plugin>
-
-<!--            <plugin>-->
-<!--                <groupId>org.springframework.boot</groupId>-->
-<!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
-<!--            </plugin>-->
         </plugins>
     </build>
 

@@ -10,7 +10,13 @@
     </h3>
 
     <h5>
-        SessionId: ${sessionId}
+        webSessionId: ${webSessionId!""}
+    </h5>
+    <h5>
+        SecuritySessionId: ${SecuritySessionId!""}
+    </h5>
+    <h5>
+        loginTime: ${loginTime?string("yyyy-MM-dd HH:mm:ss")}
     </h5>
 </@htmlBody>
 

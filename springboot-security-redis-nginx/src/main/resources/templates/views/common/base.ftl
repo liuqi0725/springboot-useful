@@ -7,8 +7,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-        <link rel="stylesheet" href="${basePath}/assets/vendor/bootstrap/css/bootstrap.css">
-        <link rel="stylesheet" href="${basePath}/assets/vendor/nprogress/nprogress.css">
+        <link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="/assets/vendor/nprogress/nprogress.css">
         <style>
             .navM0 {
                 margin: 0 0 0 0 !important
@@ -57,17 +57,17 @@
 
 <#macro htmlBottom>
     <#-- jQuery -->
-    <script type="text/javascript" src="${basePath}/assets/vendor/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="/assets/vendor/jquery-1.11.1.min.js"></script>
     <!-- json2 -->
-    <script type="text/javascript" src="${basePath}/assets/vendor/JSON-js-master/json2.js"></script>
+    <script type="text/javascript" src="/assets/vendor/JSON-js-master/json2.js"></script>
     <!-- pjax -->
-    <script type="text/javascript" src="${basePath}/assets/vendor/jquery-pjax/jquery.pjax.js"></script>
+    <script type="text/javascript" src="/assets/vendor/jquery-pjax/jquery.pjax.js"></script>
     <!-- nprogress -->
-    <script type="text/javascript" src="${basePath}/assets/vendor/nprogress/nprogress.js"></script>
+    <script type="text/javascript" src="/assets/vendor/nprogress/nprogress.js"></script>
     <!-- bootstrap -->
-    <script type="text/javascript" src="${basePath}/assets/vendor/bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/assets/vendor/bootstrap/js/bootstrap.js"></script>
     <!-- js -->
-    <script type="text/javascript" src="${basePath}/assets/js/main.js"></script>
+    <script type="text/javascript" src="/assets/js/main.js"></script>
 
     <!-- customer -->
     <script>
